@@ -10,16 +10,29 @@ body {
     font-size: 70pt;
 }
 
-div.add-task-container {
+@media screen and (max-width: 450px) {
+    #page-title {
+        font-size: 50pt;
+    }
+}
+
+.content-container {
+    display: flex;
+    padding: 30px;
+    gap: 20px;
+}
+
+.add-task-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+    width: 30vw;
 }
 
 h2 {
     font-size: 30pt;
     border-bottom: 2px solid black;
-    width: 30%;
 }
 
 form {
@@ -37,14 +50,14 @@ input {
     padding: 10px;
     font-family: 'Bad Script', cursive;
     font-size: 20pt;
-}
-
-input[type="text"] {
-    width: 30%;
+    width: 100%;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.500);
 }
 
 input[type="submit"] {
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
+    max-width: 30%;
+    min-width: fit-content;
 }
 
 #new-desc {
@@ -52,7 +65,6 @@ input[type="submit"] {
 }
 
 .list-section {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,7 +76,6 @@ input[type="submit"] {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    width: 50%;
 }
 
 .list-container h2 {
@@ -73,13 +84,14 @@ input[type="submit"] {
 }
 
 .task-container {
-    width: 100%;
     text-align: start;
     border: #DED0B6 5px solid;
     background-color: #FAEED1;
     border-radius: 5px;
     margin: 10px;
     padding: 15px;
+    width: 60vw;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.500);
 }
 
 .task-title {
@@ -92,4 +104,21 @@ input[type="submit"] {
 .task-desc {
     text-shadow: none;
     font-size: 15pt;
+    text-align: justify;
+}
+
+@media screen and (max-width: 950px){
+    .content-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .add-task-container {
+        width: 85%;
+    }
+
+    .task-container {
+        width: 85%;
+    }
 }

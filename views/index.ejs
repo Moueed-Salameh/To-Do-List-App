@@ -11,27 +11,29 @@
 </head>
 <body>
     <h1 id="page-title">To Do List</h1>
-    <div class="add-task-container">
-        <h2>Add Task:</h2>
-        <form action="/submit" method="POST">
-            <input id="new-title" type="text" name="taskTitle" placeholder="Task Title" required>
-            <input id="new-desc" type="text" name="taskDesc" placeholder="Task Description" required>
-            <!--ADD DATE FUNCTIONALITY-->
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-    <section class="list-section">
-        <div class="list-container">
-            <h2>To Do List:</h2>
-            <% if (locals.data) { %>
-                <% data.forEach((post) => { %>
-                    <div class="task-container">
-                        <h3 class="task-title"><%= post.tskTitle %></h3>
-                        <p class="task-desc"><%= post.tskDesc %></p>                  
-                    </div>
-                <% }) %>
-            <% } %>
+    <div class="content-container">
+        <div class="add-task-container">
+            <h2>Add Task:</h2>
+            <form action="/submit" method="POST">
+                <input id="new-title" type="text" name="taskTitle" placeholder="Task Title" required>
+                <input id="new-desc" type="text" name="taskDesc" placeholder="Task Description" required>
+                <!--ADD DATE FUNCTIONALITY-->
+                <input type="submit" value="Submit">
+            </form>
         </div>
-    </section>
+        <section class="list-section">
+            <div class="list-container">
+                <h2>To Do List:</h2>
+                <% if (locals.data) { %>
+                    <% data.forEach((post) => { %>
+                        <div class="task-container">
+                            <h3 class="task-title"><%= post.tskTitle %></h3>
+                            <p class="task-desc"><%= post.tskDesc %></p>                  
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
