@@ -1,0 +1,29 @@
+body {
+    background-color: #FDF7E4;
+    text-align: center;
+    font-family: 'Bad Script', cursive;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
+}
+
+#page-title {
+    color: #BBAB8C;
+    font-size: 70pt;
+}
+
+input {
+    border: #DED0B6 5px solid;
+    background-color: #FAEED1;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    font-family: 'Bad Script', cursive;
+    font-size: 20pt;
+}
+
+input[type="text"] {
+    width: 30%;
+}
+
+#new-desc {
+    height: 200px;
+}

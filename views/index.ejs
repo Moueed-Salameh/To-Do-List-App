@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <h1 id="page-title">To Do List</h1>
+    <div class="add-task-container">
+        <h2>Add Task:</h2>
+        <form action="/submit" method="POST">
+            <input id="new-title" type="text" name="taskTitle" placeholder="Task Title" required><br>
+            <input id="new-desc" type="text" name="taskDesc" placeholder="Task Description" required><br>
+            <!--ADD DATE FUNCTIONALITY-->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <% if (locals.data) { %>
+        <% data.forEach((post) => { %>
+            <h3 class="<%=post.tskTitle%>"><%= post.tskTitle %></h3>
+            <p><%= post.tskDesc %></p>                  
+        <% }) %>
+    <% } %>
+</body>
+</html>
