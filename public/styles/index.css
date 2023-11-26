@@ -10,12 +10,6 @@ body {
     font-size: 70pt;
 }
 
-@media screen and (max-width: 450px) {
-    #page-title {
-        font-size: 50pt;
-    }
-}
-
 .content-container {
     display: flex;
     padding: 30px;
@@ -26,13 +20,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     width: 30vw;
 }
 
 h2 {
     font-size: 30pt;
     border-bottom: 2px solid black;
+    text-align: start;
+    align-self: start;
 }
 
 form {
@@ -60,6 +56,29 @@ input[type="submit"] {
     min-width: fit-content;
 }
 
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 50px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.500);
+    background-color: #FDF7E4;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked::before {
+    content: '\2713';
+    text-align: center;
+    font-size: 30pt;
+    position: absolute;
+    top: -18px;
+    left: 5px;
+}
+
 #new-desc {
     height: 200px;
 }
@@ -76,11 +95,7 @@ input[type="submit"] {
     justify-content: center;
     align-items: center;
     padding: 10px;
-}
-
-.list-container h2 {
-    text-align: start;
-    width: 100%;
+    gap: 5px;
 }
 
 .task-container {
@@ -88,7 +103,7 @@ input[type="submit"] {
     border: #DED0B6 5px solid;
     background-color: #FAEED1;
     border-radius: 5px;
-    margin: 10px;
+    margin: 0px 0px 10px 0px;
     padding: 15px;
     width: 60vw;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.500);
@@ -96,8 +111,7 @@ input[type="submit"] {
 
 .task-title {
     border-bottom: 2px solid black;
-    width: 50%;
-    margin: 0;
+    margin: 0 0 0 80px;
     font-size: 20pt;
 }
 
@@ -105,6 +119,7 @@ input[type="submit"] {
     text-shadow: none;
     font-size: 15pt;
     text-align: justify;
+    margin: 10px 0 0 80px;
 }
 
 @media screen and (max-width: 950px){
@@ -113,6 +128,10 @@ input[type="submit"] {
         justify-content: center;
         align-items: center;
     }
+    h2 {
+        text-align: center;
+        align-self: center;
+    }
 
     .add-task-container {
         width: 85%;
@@ -120,5 +139,19 @@ input[type="submit"] {
 
     .task-container {
         width: 85%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #page-title {
+        font-size: 50pt;
+    }
+
+    .task-title {
+        font-size: 15pt;
+    }
+
+    .task-desc {
+        font-size: 13pt;
     }
 }

@@ -25,10 +25,11 @@
             <div class="list-container">
                 <h2>To Do List:</h2>
                 <% if (locals.data) { %>
-                    <% data.forEach((post) => { %>
+                    <% data.forEach((post, id) => { %>
                         <div class="task-container">
+                            <input type="checkbox" id="check<%= id %>" name="check">               
                             <h3 class="task-title"><%= post.tskTitle %></h3>
-                            <p class="task-desc"><%= post.tskDesc %></p>                  
+                            <p class="task-desc"><%= post.tskDesc %></p>
                         </div>
                     <% }) %>
                 <% } %>
