@@ -14,7 +14,7 @@
     <div class="content-container">
         <div class="add-task-container">
             <h2>Add Task:</h2>
-            <form action="/submit" method="POST">
+            <form id="add-task-form" action="/submit" method="POST">
                 <input id="new-title" type="text" name="taskTitle" placeholder="Task Title" required>
                 <input id="new-desc" type="text" name="taskDesc" placeholder="Task Description" required>
                 <!--ADD DATE FUNCTIONALITY-->
@@ -24,14 +24,17 @@
         <section class="list-section">
             <div class="list-container">
                 <h2>To Do List:</h2>
-                <% if (locals.data) { %>
-                    <% data.forEach((post, id) => { %>
+                <% if (locals.data[0]) { %>
+                    <% data.forEach((post) => { %>
                         <div class="task-container">
-                            <input type="checkbox" id="check<%= id %>" name="check">               
+                            <input form="check-off-form" type="checkbox" id="check<%= post.tskId %>" name="check<%= post.tskId %>">               
                             <h3 class="task-title"><%= post.tskTitle %></h3>
                             <p class="task-desc"><%= post.tskDesc %></p>
                         </div>
                     <% }) %>
+                    <form id="check-off-form" action="/checkoff" method="POST">
+                        <input type="submit" value="Check Off Tasks">
+                    </form>
                 <% } %>
             </div>
         </section>
