@@ -1,39 +1,52 @@
 import express from "express";
 import bodyParser from "body-parser";
+import axios from "axios";
 
 const app = express();
 const port = 3000;
+const API_URL = "http://localhost:4000";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let posts = [];
-let lastId = 0;
-
-app.get("/", (req, res) => {
-  res.render("index.ejs", {data: posts});
+app.get("/", async (req, res) => {
+  try {
+    const response = await axios.get(`${API_URL}/posts`);
+    res.render("index.ejs", { posts: response.data });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching posts" });
+  }
 });
 
-app.post("/submit", (req, res) => {
-  posts.push({
-      tskId: lastId,
-      tskTitle: req.body["taskTitle"],
-      tskDesc: req.body["taskDesc"],
-  });
-  lastId += 1;
+app.post("/submit", async (req, res) => {
+  try {
+    const response = await axios.post(`${API_URL}/posts`, req.body);
+    console.log("CREATED POST:");
+    console.log(response.data);
+  } catch (error) {
+    res.status(500).json({ message: "Error creating post" });
+  }
   res.redirect("/");
 });
 
-app.post("/checkoff", (req,res) => {
-  Object.keys(req.body).forEach((key) => {
+app.post("/checkoff", async (req,res) => {
+  for (const key of Object.keys(req.body)) {
     const deleteId = parseInt(key.slice(5));
-    const deleteIndex = posts.findIndex((post) => post.tskId === deleteId);
-    posts.splice(deleteIndex, 1);
-  });
+    try {
+      const response = await axios.delete(`${API_URL}/posts/${deleteId}`);
+      console.log(response.data);
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting post" });
+    }
+  }
   res.redirect("/");
 })
+
+async function deletePost(id) {
+  await axios.delete(`${API_URL}/posts/${id}`);
+}
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
     console.log("Go to http://localhost:3000/");
-  });
+});

@@ -24,8 +24,8 @@
         <section class="list-section">
             <div class="list-container">
                 <h2>To Do List:</h2>
-                <% if (locals.data[0]) { %>
-                    <% data.forEach((post) => { %>
+                <% if (locals.posts[0]) { %>
+                    <% posts.forEach((post) => { %>
                         <div class="task-container">
                             <input form="check-off-form" type="checkbox" id="check<%= post.tskId %>" name="check<%= post.tskId %>">               
                             <h3 class="task-title"><%= post.tskTitle %></h3>
